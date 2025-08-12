@@ -1,0 +1,24 @@
+# Core TTS Engine
+tortoise-tts==3.0.0
+
+# Deep Learning Framework
+torch==2.2.2
+torchaudio==2.2.2
+
+# Audio Processing
+librosa==0.11.0
+
+# Numerical Computing
+numpy
+scipy
+
+# CRITICAL: Must use this specific version, newer versions cause compatibility issues
+transformers==4.31.0
+
+# Alternative TTS (experimental - has installation issues on Intel Macs)
+# TTS
+
+# Additional dependencies that may be pulled in by tortoise-tts
+# huggingface-hub
+# tokenizers
+# accelerate
