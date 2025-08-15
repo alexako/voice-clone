@@ -14,7 +14,7 @@ import time
 from pathlib import Path
 
 class ImprovedTortoiseGenerator:
-    def __init__(self, voice_name="target_voice"):
+    def __init__(self, voice_name="alex"):
         """Initialize with optimized settings"""
         self.voice_name = voice_name
         self.device = self._get_best_device()
@@ -115,7 +115,7 @@ class ImprovedTortoiseGenerator:
         
         print(f"\n🎤 Generating speech with '{preset}' preset")
         print(f"📝 Text: '{text}'")
-        print(f"🎯 Voice: {self.voice_name}")
+        print(f"🎯 Using voice model: {self.voice_name}")
         
         if preset not in self.quality_presets:
             print(f"❌ Unknown preset '{preset}'. Available: {list(self.quality_presets.keys())}")
@@ -129,7 +129,8 @@ class ImprovedTortoiseGenerator:
         try:
             # Load voice samples
             print("📂 Loading voice samples...")
-            voice_samples, _ = load_voices([self.voice_name])
+            voices_base_dir = os.path.join(os.path.expanduser("~"), ".cache", "tortoise", "voices")
+            voice_samples, _ = load_voices([self.voice_name], extra_voice_dirs=[voices_base_dir])
             
             print("⏳ Generating speech... This may take a while on Intel Mac")
             start_time = time.time()
@@ -204,7 +205,7 @@ def main():
     text = sys.argv[1]
     preset = 'custom_optimized'
     output_file = None
-    voice_name = 'target_voice'
+    voice_name = 'alex'
     
     # Parse arguments
     i = 2
